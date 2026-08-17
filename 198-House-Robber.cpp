@@ -24,15 +24,28 @@ public:
         // int ans = helper(0,nums,n, dp);
         // return ans;
 
-        // TABULATION METHOD
+        // // TABULATION METHOD
+        // int n = nums.size();
+        // vector<int> dp(n+2, 0);
+        // // starting from right
+        // for(int i = n-1; i >= 0 ; i--){
+        //     int pick = nums[i] + dp[i + 2];
+        //     int notpick = dp[i+1];
+        //     dp[i] = max(pick , notpick);
+        // }
+        // return dp[0];
+
+        //NOW SPACE OPTIMIZATION
         int n = nums.size();
-        vector<int> dp(n+2, 0);
-        // starting from right
+        int front = 0;
+        int front2 = 0;
         for(int i = n-1; i >= 0 ; i--){
-            int pick = nums[i] + dp[i + 2];
-            int notpick = dp[i+1];
-            dp[i] = max(pick , notpick);
+            int pick = nums[i]+ front2;
+            int notpick = front;
+            int curr = max(pick , notpick);
+            front2 = front;
+            front = curr;
         }
-        return dp[0];
+        return front;
     }
 };
