@@ -5,7 +5,7 @@ public:
         long long ans = 0;
         vector<long long>square(n);
         for(int i = 0;i < n ; i++){
-            square[i] = nums[i]*nums[i];
+            square[i] = 1LL * nums[i] * nums[i];
         }
         sort(square.begin(), square.end());
         long long minhalf = 0;
